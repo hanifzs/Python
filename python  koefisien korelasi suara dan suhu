@@ -1,0 +1,25 @@
+import pandas as pd
+import scipy.stats
+import matplotlib.pyplot as plt
+
+# Data
+suara = [18, 20, 21, 23, 27, 30, 34, 39]
+suhu = [14, 16, 18, 19, 20, 22, 23, 25]
+
+# Hitung korelasi Pearson
+r, p = scipy.stats.pearsonr(suara, suhu)
+
+# Tampilkan hasil korelasi
+print("=== Hasil Korelasi Pearson ===")
+print(f"Koefisien korelasi (r): {r:.4f}")
+
+# Scatter Plot
+plt.figure(figsize=(6, 4))
+plt.scatter(suara, suhu, color='blue', label='Data')
+plt.title(f'Scatter Plot: Suara vs Suhu\nr = {r:.2f}')
+plt.xlabel('Suara')
+plt.ylabel('Suhu')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
