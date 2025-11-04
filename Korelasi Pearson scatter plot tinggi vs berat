@@ -1,0 +1,29 @@
+import pandas as pd
+import scipy.stats
+import matplotlib.pyplot as plt
+
+# === Baca data dari file Excel ===
+df = pd.read_excel("C:\\Users\\Muhammad Hanif\\Documents\\PTI B.xlsx")
+
+# Ambil kolom yang sesuai
+tinggi = df["Tinggi Badan"]
+berat = df["Berat Badan"]
+
+# === Hitung korelasi Pearson ===
+r, p = scipy.stats.pearsonr(tinggi, berat)
+
+# === Tampilkan hasil di terminal ===
+print("=== Hasil Korelasi Pearson ===")
+print(f"Koefisien korelasi (r): {r:.4f}")
+print(f"Nilai p-value: {p:.4f}")
+
+# === Scatter Plot ===
+plt.figure(figsize=(6, 4))
+plt.scatter(tinggi, berat, color='blue', label='Data')
+plt.title(f'Scatter Plot: Tinggi vs Berat\nr = {r:.2f}')
+plt.xlabel('Tinggi Badan (cm)')
+plt.ylabel('Berat Badan (kg)')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
